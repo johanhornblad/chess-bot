@@ -10,7 +10,7 @@ target_link_libraries(main_test gtest gtest_main)
 add_test(NAME MyTests COMMAND main_test)
 
 # Add the test source file
-add_executable(board_controller_test board_controller_test.cpp)
+add_executable(board_controller_test board_controller_test.cpp ../src/board_controller.cpp)
 
 # Link GoogleTest to the test executable
 target_link_libraries(board_controller_test gtest gtest_main)

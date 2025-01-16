@@ -7,7 +7,8 @@
 class BoardController {
     public:
         void initialSetup(std::vector<std::vector<Square>>& board);
-
+    private:
+        void setupRooks(std::vector<std::vector<Square>>& board);
 
 
 
