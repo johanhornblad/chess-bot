@@ -1,10 +1,12 @@
 #include <gtest/gtest.h>
+class ChessBotTests : public ::testing::Test {
+};
 
-TEST(HelloWorldTest, BasicAssertions) {
+TEST_F(ChessBotTests, HelloWorldTest) {
     EXPECT_EQ(1 + 1, 2);
 }
 
-TEST(SampleTest, AssertionTrue) {
+TEST_F(ChessBotTests, SampleTest) {
     ASSERT_TRUE(true);
 }
 

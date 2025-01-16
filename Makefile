@@ -5,7 +5,7 @@ CXX = g++
 CXXFLAGS = -std=c++20 -Wall -g -Iinc
 
 # Source files
-SRCS = src/main.cpp 
+SRCS = src/main.cpp src/board_controller.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)

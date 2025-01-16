@@ -7,6 +7,9 @@ build/
 *.obj
 *.exe
 *.out
+*.a
+*.dSYM/
+*.pdb
 
 # Ignore dependency directories
 node_modules/
@@ -15,6 +18,8 @@ vendor/
 # Ignore OS generated files
 .DS_Store
 Thumbs.db
+.Spotlight-V100
+.Trashes
 
 # Ignore log files
 *.log
@@ -31,6 +36,8 @@ Thumbs.db
 *.swo
 *.bak
 *.old
+.~lock.*
+
 
 # Ignore backup files
 *.bak
