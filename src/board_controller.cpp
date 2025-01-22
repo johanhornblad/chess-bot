@@ -12,8 +12,9 @@ void BoardController::initialSetup(std::vector<std::vector<Square>>& board) {
 }
 
 void BoardController::printBoard(std::vector<std::vector<Square>>& board, Color playerColor) {
-  std::cout << " - - - - - - - - " << std::endl;
+
   for(int i = 7;  i >= 0; i--) {
+    std::cout << i + 1 << " ";
     for(int j = 0; j < 8; j++) {
       char pieceChar; 
        switch (board[i][j].piece) {
@@ -26,12 +27,15 @@ void BoardController::printBoard(std::vector<std::vector<Square>>& board, Color 
              default: pieceChar = ' ';
          }
         if (board[i][j].color == BLACK) pieceChar = tolower(pieceChar);
-        std::cout << "|" << pieceChar;
+        std::cout << "[" << pieceChar << "]";
 
     }
-    std::cout << "|" << std::endl;
-    std::cout << " - - - - - - - - " << std::endl;
+    std::cout << std::endl;
   }
+
+  std::cout << "  ------------------------" << std::endl;
+  std::cout << "  [A][B][C][D][E][F][G][H]" << std::endl;
+
 
 }
 
