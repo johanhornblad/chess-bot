@@ -4,8 +4,6 @@
 
 #include "square.h"
 
-
-
 struct Move {
     int startRow;
     int startColumn;

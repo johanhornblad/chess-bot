@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include 
 
 class PawnLogicTest : public ::testing::Test {
 protected:
@@ -12,7 +13,7 @@ protected:
 };
 
 // Example test case
-TEST_F(PawnLogicTest, ExampleTest) {
+TEST_F(PawnLogicTest, FromStartPositionGetTwoAvailableMoves) {
     // Your test code here
     EXPECT_EQ(1, 1);
 }
