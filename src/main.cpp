@@ -13,9 +13,7 @@ int main() {
 
     boardController.initialSetup(board);
 
-    boardController.printBoard(board, Color::WHITE);
-
-    std::cout << "Hello, World!" << std::endl;
+    boardController.printBoard(board, Color::BLACK);
 
     return 0;
 }

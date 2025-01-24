@@ -17,6 +17,10 @@ add_subdirectory(tests)
 set(SOURCES
     src/main.cpp
     src/board_controller.cpp
+    src/player.cpp
+    src/piece_logic_factory.cpp
+    #specific piece logic clases
+    src/pawn_logic.cpp
     # Add more source files as needed
 )
 # Add your source files

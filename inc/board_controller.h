@@ -7,7 +7,9 @@
 class BoardController {
     public:
         void initialSetup(std::vector<std::vector<Square>>& board);
-        void printBoard(std::vector<std::vector<Square>>& board, Color playerColor);
+        void printBoard(std::vector<std::vector<Square>> &board, Color playerColor);
+        void printRow(std::vector<std::vector<Square>> &board, int i);
+
     private:
         void setupPawns(std::vector<std::vector<Square>>& board);
         void setupRooks(std::vector<std::vector<Square>>& board);

@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <iostream>
 
+
 void BoardController::initialSetup(std::vector<std::vector<Square>>& board) {
     setupPawns(board);
     setupRooks(board);
@@ -12,34 +13,54 @@ void BoardController::initialSetup(std::vector<std::vector<Square>>& board) {
 }
 
 void BoardController::printBoard(std::vector<std::vector<Square>>& board, Color playerColor) {
-
-  for(int i = 7;  i >= 0; i--) {
-    std::cout << i + 1 << " ";
-    for(int j = 0; j < 8; j++) {
-      char pieceChar; 
-       switch (board[i][j].piece) {
-             case PAWN: pieceChar = 'P'; break;
-             case KNIGHT: pieceChar = 'N'; break;
-             case BISHOP: pieceChar = 'B'; break;
-             case ROOK: pieceChar = 'R'; break;
-             case QUEEN: pieceChar = 'Q'; break;
-             case KING: pieceChar = 'K'; break;
-             default: pieceChar = ' ';
-         }
-        if (board[i][j].color == BLACK) pieceChar = tolower(pieceChar);
-        std::cout << "[" << pieceChar << "]";
-
+  if (playerColor == Color::WHITE) {
+    for (int i = 7; i >= 0; i--) {
+      std::cout << i + 1 << " ";
+      printRow(board, i);
+      std::cout << std::endl;
     }
-    std::cout << std::endl;
+  } else {
+    for (int i = 0; i < 8; i++) {
+      std::cout << i + 1 << " ";
+      printRow(board, i);
+      std::cout << std::endl;
+    }
   }
-
   std::cout << "  ------------------------" << std::endl;
   std::cout << "  [A][B][C][D][E][F][G][H]" << std::endl;
-
-
 }
 
-
+void BoardController::printRow(std::vector<std::vector<Square>> &board, int i)
+{
+  for (int j = 0; j < 8; j++) {
+    char pieceChar;
+    switch (board[i][j].piece) {
+      case PAWN:
+        pieceChar = 'P';
+        break;
+      case KNIGHT:
+        pieceChar = 'N';
+        break;
+      case BISHOP:
+        pieceChar = 'B';
+        break;
+      case ROOK:
+        pieceChar = 'R';
+        break;
+      case QUEEN:
+        pieceChar = 'Q';
+        break;
+      case KING:
+        pieceChar = 'K';
+        break;
+      default:
+        pieceChar = ' ';
+    }
+    if (board[i][j].color == BLACK)
+      pieceChar = tolower(pieceChar);
+    std::cout << "[" << pieceChar << "]";
+  }
+}
 void BoardController::setupPawns(std::vector<std::vector<Square>>& board) {
     auto whitePawn = Square{Piece::PAWN, Color::WHITE};
     auto blackPawn = Square{Piece::PAWN, Color::BLACK};
