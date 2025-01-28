@@ -8,7 +8,7 @@
 class PieceLogic {
 
     public:
-    virtual std::vector<Move> getAvaiableMoves(int startRow, int startColumn, const std::vector<std::vector<Square>>& board) const = 0;
+    virtual std::vector<Move> getAvaiableMoves(int startRow, int startColumn, Color color, const std::vector<std::vector<Square>>& board) const = 0;
 };
 
 #endif // PIECE_LOGIC_H

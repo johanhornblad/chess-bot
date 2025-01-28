@@ -6,7 +6,9 @@
 
 class PawnLogic: public PieceLogic {
     public:
-        std::vector<Move> getAvaiableMoves(int startRow, int startColumn, const std::vector<std::vector<Square>>& board) const override;
+        std::vector<Move> getAvaiableMoves(int startRow, int startColumn, Color color, const std::vector<std::vector<Square>>& board) const override;
+    private:
+        std::vector<Move> getCaptureMoves(int startRow, int startCol, Color color, const std::vector<std::vector<Square>>& board) const;
 
 };
 

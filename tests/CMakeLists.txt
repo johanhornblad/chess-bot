@@ -31,7 +31,7 @@ add_test(NAME PlayerTest COMMAND player_test)
 
 #New Test File
 # Add the test source file
-add_executable(pawn_logic_test pawn_logic_test.cpp ../src/pawn_logic.cpp ../src/piece_logic_factory.cpp)
+add_executable(pawn_logic_test pawn_logic_test.cpp ../src/pawn_logic.cpp ../src/piece_logic_factory.cpp ../src/board_controller.cpp)
 
 # Link GoogleTest to the test executable
 target_link_libraries(pawn_logic_test gtest gtest_main)
