@@ -2,16 +2,16 @@
 #define ROOK_LOGIC_H
 
 #include "piece_logic.h"
+#include "square.h"
 
 
-class PawnLogic: public PieceLogic {
+class RookLogic: public PieceLogic {
     public:
         std::vector<Move> getAvaiableMoves(int startRow, int startColumn, Color color, const std::vector<std::vector<Square>>& board) const override;
     private:
-        /*void getCaptureMoves(int startRow, int startCol, std::vector<Move>& moves, Color color, const std::vector<std::vector<Square>>& board) const;
-        bool isEnemy(const Square& square, Color color) const;
-        void addIfInitialMove(int startRow, int startCol, Color color, std::vector<Move>& moves ) const;
-        bool isPawnPromotion(int row, int col, Color color) const;*/
+        void moveForward(int startRow, int startCol, Color color, std::vector<Move>& availableMoves, const std::vector<std::vector<Square>>& board) const;
+        bool isWithinBoard(int row, int col) const;
+        bool isAvailableSquare(const Square& square, Color color) const;
 
 };
 

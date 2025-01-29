@@ -1,5 +1,6 @@
 #include "../inc/piece_logic_factory.h"
 #include "../inc/pawn_logic.h"
+#include "../inc/rook_logic.h"
 
 std::unique_ptr<PieceLogic> PieceLogicFactory::getPieceLogic(Piece piece) const {
     switch (piece)
@@ -7,8 +8,7 @@ std::unique_ptr<PieceLogic> PieceLogicFactory::getPieceLogic(Piece piece) const 
     case Piece::PAWN :
         return std::make_unique<PawnLogic>();
     case Piece::ROOK :
-        break;
-
+        return std::make_unique<RookLogic>();
     case Piece::KNIGHT: 
         break;    
     case Piece::BISHOP: 

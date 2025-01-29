@@ -9,7 +9,7 @@ target_link_libraries(main_test gtest gtest_main)
 # Add the test
 add_test(NAME MyTests COMMAND main_test)
 
-#New Test File
+#New Test File BoardControllerTest
 # Add the test source file
 add_executable(board_controller_test board_controller_test.cpp ../src/board_controller.cpp)
 
@@ -29,12 +29,22 @@ target_link_libraries(player_test gtest gtest_main)
 # Add the test
 add_test(NAME PlayerTest COMMAND player_test)
 
-#New Test File
+#New Test File PawnLogicTest
 # Add the test source file
-add_executable(pawn_logic_test pawn_logic_test.cpp ../src/pawn_logic.cpp ../src/piece_logic_factory.cpp ../src/board_controller.cpp)
+add_executable(pawn_logic_test pawn_logic_test.cpp ../src/pawn_logic.cpp ../src/piece_logic_factory.cpp ../src/board_controller.cpp ../src/rook_logic.cpp )
 
 # Link GoogleTest to the test executable
 target_link_libraries(pawn_logic_test gtest gtest_main)
 
 # Add the test
 add_test(NAME PawnLogicTest COMMAND pawn_logic_test)
+
+#New Test File RookLogicTest
+# Add the test source file
+add_executable(rook_logic_test rook_logic_test.cpp ../src/rook_logic.cpp ../src/piece_logic_factory.cpp ../src/board_controller.cpp ../src/pawn_logic.cpp )
+
+# Link GoogleTest to the test executable
+target_link_libraries(rook_logic_test gtest gtest_main)
+
+# Add the test
+add_test(NAME RookLogicTest COMMAND rook_logic_test)

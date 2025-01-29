@@ -21,6 +21,7 @@ set(SOURCES
     src/piece_logic_factory.cpp
     #specific piece logic clases
     src/pawn_logic.cpp
+    src/rook_logic.cpp
     # Add more source files as needed
 )
 # Add your source files
