@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../inc/rook_logic.h"
 #include "../inc/board_controller.h"
-#include "../inc/piece_logic_factory.h";
+#include "../inc/piece_logic_factory.h"
 
 class RookLogicTest : public ::testing::Test {
 protected:
@@ -54,12 +54,157 @@ TEST_F(RookLogicTest, CanMoveForwardAsWhite) {
             forwardMoveCounter++;
         }
     }
-
-
     // Assert
     ASSERT_EQ(forwardMoveCounter, 7-4);
 }
 
+TEST_F(RookLogicTest, CanMoveForwardAsBlack) {
+    // Arrange
+    auto factory = PieceLogicFactory{};
+    auto rookLogic = factory.getPieceLogic(Piece::ROOK);
+    auto startRow = 4;
+    auto startCol = 4;
+    
+    // Act
+    auto moves = rookLogic->getAvaiableMoves(startRow, startCol, Color::BLACK, board);
+    auto numOfMoves = static_cast<int>(moves.size());
+
+    auto forwardMoveCounter = 0;
+    for(const auto& move : moves ) {
+        if(move.endRow < startRow && move.endColumn == startCol ) {
+            forwardMoveCounter++;
+        }
+    }
+    // Assert
+    ASSERT_EQ(forwardMoveCounter, 4);
+}
+
+TEST_F(RookLogicTest, CanMoveBackWardsAsWhite) {
+    // Arrange
+    auto factory = PieceLogicFactory{};
+    auto rookLogic = factory.getPieceLogic(Piece::ROOK);
+    auto startRow = 4;
+    auto startCol = 4;
+    
+    // Act
+    auto moves = rookLogic->getAvaiableMoves(startRow, startCol, Color::WHITE, board);
+    auto numOfMoves = static_cast<int>(moves.size());
+
+    auto forwardMoveCounter = 0;
+    for(const auto& move : moves ) {
+        if(move.endRow < startRow && move.endColumn == startCol ) {
+            forwardMoveCounter++;
+        }
+    }
+    // Assert
+    ASSERT_EQ(forwardMoveCounter, 4);
+}
+
+
+TEST_F(RookLogicTest, CanMoveBackWardsAsBlack) {
+    // Arrange
+    auto factory = PieceLogicFactory{};
+    auto rookLogic = factory.getPieceLogic(Piece::ROOK);
+    auto startRow = 4;
+    auto startCol = 4;
+    
+    // Act
+    auto moves = rookLogic->getAvaiableMoves(startRow, startCol, Color::BLACK, board);
+    auto numOfMoves = static_cast<int>(moves.size());
+
+    auto forwardMoveCounter = 0;
+    for(const auto& move : moves ) {
+        if(move.endRow > startRow && move.endColumn == startCol ) {
+            forwardMoveCounter++;
+        }
+    }
+    // Assert
+    ASSERT_EQ(forwardMoveCounter, 7-4);
+}
+
+TEST_F(RookLogicTest, CanMoveRightsAsBlack) {
+    // Arrange
+    auto factory = PieceLogicFactory{};
+    auto rookLogic = factory.getPieceLogic(Piece::ROOK);
+    auto startRow = 4;
+    auto startCol = 4;
+    
+    // Act
+    auto moves = rookLogic->getAvaiableMoves(startRow, startCol, Color::BLACK, board);
+    auto numOfMoves = static_cast<int>(moves.size());
+
+    auto forwardMoveCounter = 0;
+    for(const auto& move : moves ) {
+        if(move.endRow == startRow && move.endColumn < startCol ) {
+            forwardMoveCounter++;
+        }
+    }
+    // Assert
+    ASSERT_EQ(forwardMoveCounter, 4);
+}
+
+TEST_F(RookLogicTest, CanMoveRightsAsWhite) {
+    // Arrange
+    auto factory = PieceLogicFactory{};
+    auto rookLogic = factory.getPieceLogic(Piece::ROOK);
+    auto startRow = 4;
+    auto startCol = 4;
+    
+    // Act
+    auto moves = rookLogic->getAvaiableMoves(startRow, startCol, Color::WHITE, board);
+    auto numOfMoves = static_cast<int>(moves.size());
+
+    auto forwardMoveCounter = 0;
+    for(const auto& move : moves ) {
+        if(move.endRow == startRow && move.endColumn > startCol ) {
+            forwardMoveCounter++;
+        }
+    }
+    // Assert
+    ASSERT_EQ(forwardMoveCounter, 7-4);
+}
+
+TEST_F(RookLogicTest, CanMoveLeftsAsBlack) {
+    // Arrange
+    auto factory = PieceLogicFactory{};
+    auto rookLogic = factory.getPieceLogic(Piece::ROOK);
+    auto startRow = 4;
+    auto startCol = 4;
+    
+    // Act
+    auto moves = rookLogic->getAvaiableMoves(startRow, startCol, Color::BLACK, board);
+    auto numOfMoves = static_cast<int>(moves.size());
+
+    auto forwardMoveCounter = 0;
+    for(const auto& move : moves ) {
+        if(move.endRow == startRow && move.endColumn > startCol ) {
+            forwardMoveCounter++;
+        }
+    }
+    // Assert
+    ASSERT_EQ(forwardMoveCounter, 7-4);
+}
+
+TEST_F(RookLogicTest, CanMoveLeftsAsWhite) {
+    // Arrange
+    auto factory = PieceLogicFactory{};
+    auto rookLogic = factory.getPieceLogic(Piece::ROOK);
+    auto startRow = 4;
+    auto startCol = 4;
+    
+    // Act
+    auto moves = rookLogic->getAvaiableMoves(startRow, startCol, Color::WHITE, board);
+    auto numOfMoves = static_cast<int>(moves.size());
+
+    auto forwardMoveCounter = 0;
+    for(const auto& move : moves ) {
+        if(move.endRow == startRow && move.endColumn < startCol ) {
+            forwardMoveCounter++;
+        }
+    }
+    // Assert
+    ASSERT_EQ(forwardMoveCounter, 4);
+}
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

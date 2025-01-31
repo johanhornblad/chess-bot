@@ -1,23 +1,19 @@
-#ifndef ROOK_LOGIC_H
-#define ROOK_LOGIC_H
 
-#include "piece_logic.h"
+#ifndef STRAIGHT_LOGIC_H
+#define STRAIGHT_LOGIC_H
 #include "square.h"
+#include <vector>
+#include "move.h"
+#include "piece_logic.h"
 
 
-class RookLogic: public PieceLogic {
-    public:
-        std::vector<Move> getAvaiableMoves(int startRow, int startColumn, Color color, const std::vector<std::vector<Square>>& board) const override;
+class StraightLogic : public PieceLogic {
+
     private:
         void moveForward(int startRow, int startCol, Color color, std::vector<Move>& availableMoves, const std::vector<std::vector<Square>>& board) const;
         void moveBackWards(int startRow, int startCol, Color color, std::vector<Move>& availableMoves, const std::vector<std::vector<Square>>& board) const;
         void moveRight(int startRow, int startCol, Color color, std::vector<Move>& availableMoves, const std::vector<std::vector<Square>>& board) const;
         void moveLeft(int startRow, int startCol, Color color, std::vector<Move>& availableMoves, const std::vector<std::vector<Square>>& board) const;
-        bool isWithinBoard(int row, int col) const;
-        bool isAvailableSquare(const Square& square, Color color) const;
-
 };
 
-
-
-#endif // ROOK_LOGIC_H
+#endif // STRAIGHT_LOGIC_H
