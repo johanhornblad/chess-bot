@@ -19,9 +19,13 @@ set(SOURCES
     src/board_controller.cpp
     src/player.cpp
     src/piece_logic_factory.cpp
+    src/piece_logic.cpp
+    src/straight_logic.cpp
+    src/diagonal_logic.cpp
     #specific piece logic clases
     src/pawn_logic.cpp
     src/rook_logic.cpp
+    src/bishop_logic.cpp
     # Add more source files as needed
 )
 # Add your source files

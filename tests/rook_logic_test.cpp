@@ -6,7 +6,7 @@
 class RookLogicTest : public ::testing::Test {
 protected:
 
-
+    // TODO: I have the take tests left.
     std::vector<std::vector<Square>> board = std::vector<std::vector<Square>>(8, std::vector<Square>(8, Square{Piece::EMPTY, Color::NONE}));
     BoardController boardController = BoardController{};
     void SetUp() override {
