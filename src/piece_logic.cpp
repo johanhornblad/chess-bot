@@ -1,4 +1,5 @@
 #include "../inc/piece_logic.h"
+#include <iostream>
 
 const int MAX_COL = 7;
 const int MAX_ROW = 7;
@@ -10,7 +11,7 @@ bool PieceLogic::isWithinBoard(int row, int col) const {
 }
 
 bool PieceLogic::isAvailableSquare(const Square& square, Color color) const {
-    return square.piece == Piece::EMPTY && color != square.color;
+    return square.piece == Piece::EMPTY || color != square.color;
 }
 
 Move PieceLogic::createMove(int startRow, int startColumn, Color color, const Square& endSquare, int endRow, int endColumn) const {

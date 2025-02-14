@@ -20,6 +20,51 @@ protected:
     // Add any necessary member variables or helper functions here
 };
 
+
+TEST_F(BishopLogicTest, TakeAsWhite) {
+    int startRow = 4;
+    int startCol = 4;
+    auto factory = PieceLogicFactory{};
+    board[startRow + 1][startCol + 1] = Square{Piece::BISHOP, Color::BLACK};
+
+    auto bishopLogic = factory.getPieceLogic(Piece::BISHOP);
+    auto moves = bishopLogic->getAvaiableMoves(startRow, startCol, Color::WHITE, board);
+
+    int moveCount = 0;
+    for (const auto& move : moves) {
+        if(move.endRow == startRow + 1 && move.endColumn  == startCol + 1) {
+            moveCount++;
+            ASSERT_NE(move.capture, Piece::EMPTY);
+            ASSERT_EQ(move.capture, Piece::BISHOP);
+        }
+    }
+
+    ASSERT_EQ(moveCount, 1);
+}
+
+TEST_F(BishopLogicTest, TakeAsBlack) {
+    int startRow = 4;
+    int startCol = 4;
+    auto factory = PieceLogicFactory{};
+    board[startRow + 1][startCol + 1] = Square{Piece::BISHOP, Color::WHITE};
+
+    auto bishopLogic = factory.getPieceLogic(Piece::BISHOP);
+    auto moves = bishopLogic->getAvaiableMoves(startRow, startCol, Color::BLACK, board);
+
+    int moveCount = 0;
+    for (const auto& move : moves) {
+        if(move.endRow == startRow + 1 && move.endColumn  == startCol + 1) {
+            moveCount++;
+            ASSERT_NE(move.capture, Piece::EMPTY);
+            ASSERT_EQ(move.capture, Piece::BISHOP);
+        }
+    }
+
+    ASSERT_EQ(moveCount, 1);
+}
+
+
+
 TEST_F(BishopLogicTest, moveRightForwardWhite) {
     int startRow = 4;
     int startCol = 4;

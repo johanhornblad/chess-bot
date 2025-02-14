@@ -37,6 +37,56 @@ TEST_F(RookLogicTest, TestThatItCannoTMoveIfBlockedAllAround) {
     ASSERT_EQ(numOfMoves, 0);
 }
 
+TEST_F(RookLogicTest, TakeAsWhite) {
+    // Arrange
+    auto factory = PieceLogicFactory{};
+    auto rookLogic = factory.getPieceLogic(Piece::ROOK);
+    auto startRow = 4;
+    auto startCol = 4;
+
+    Square enemy = Square{Piece::ROOK, Color::BLACK};
+    board[startRow + 1][startCol] = enemy;
+
+    // Act
+    auto moves = rookLogic->getAvaiableMoves(startRow, startCol, Color::WHITE, board);
+    auto numOfMoves = static_cast<int>(moves.size());
+
+    auto forwardMoveCounter = 0;
+    for(const auto& move : moves ) {
+        if(move.endRow == startRow + 1 && move.endColumn == startCol ) {
+            ASSERT_NE(move.capture, Piece::EMPTY);
+            forwardMoveCounter++;
+        }
+    }
+    // Assert
+    ASSERT_EQ(forwardMoveCounter, 1);
+}
+
+TEST_F(RookLogicTest, TakeAsBlack) {
+    // Arrange
+    auto factory = PieceLogicFactory{};
+    auto rookLogic = factory.getPieceLogic(Piece::ROOK);
+    auto startRow = 4;
+    auto startCol = 4;
+
+    Square enemy = Square{Piece::ROOK, Color::WHITE};
+    board[startRow - 1][startCol] = enemy;
+
+    // Act
+    auto moves = rookLogic->getAvaiableMoves(startRow, startCol, Color::BLACK, board);
+    auto numOfMoves = static_cast<int>(moves.size());
+
+    auto forwardMoveCounter = 0;
+    for(const auto& move : moves ) {
+        if(move.endRow == startRow - 1 && move.endColumn == startCol ) {
+            ASSERT_NE(move.capture, Piece::EMPTY);
+            forwardMoveCounter++;
+        }
+    }
+    // Assert
+    ASSERT_EQ(forwardMoveCounter, 1);
+}
+
 TEST_F(RookLogicTest, CanMoveForwardAsWhite) {
     // Arrange
     auto factory = PieceLogicFactory{};
