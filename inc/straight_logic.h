@@ -7,7 +7,7 @@
 #include "piece_logic.h"
 
 
-class StraightLogic : public PieceLogic {
+class StraightLogic : virtual public PieceLogic {
 
     public:
         void moveForward(int startRow, int startCol, Color color, std::vector<Move>& availableMoves, const std::vector<std::vector<Square>>& board) const;
