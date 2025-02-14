@@ -5,6 +5,7 @@
 
 class BishopLogic : public DiagonalLogic {
     public:
-        std::vector<Move> getAvaiableMoves(int startRow, int startColumn, Color color, const std::vector<std::vector<Square>>& board) const override;};
+        std::vector<Move> getAvaiableMoves(int startRow, int startColumn, Color color, const std::vector<std::vector<Square>>& board) const override;
+};
 
 #endif // BISHOP_LOGIC_H
