@@ -19,8 +19,9 @@ class PieceLogic {
         bool isAvailableSquare(const Square& square, Color color) const;
         Move createMove(int startRow, int startColumn, Color color, const Square& endSquare, int endRow, int endColumn) const;
         void movePiece(int startRow, int startCol, Color color, Horizontal horizontalDirection, Vertical verticalDirection, std::vector<Move>& availableMoves, const std::vector<std::vector<Square>>& board) const;
-        int moveVerticalIndex(int column, Vertical verticalDirection, Color color) const;
-        int moveHorizontalIndex(int row, Horizontal horizontalDirection, Color color) const;
+        int moveVerticalIndex(int row, Vertical verticalDirection, Color color) const;
+        int moveHorizontalIndex(int column, Horizontal horizontalDirection, Color color) const;
+        bool isTakeMove(const Square& square, Color color) const;
 
 
 };

@@ -18,6 +18,10 @@ Move PieceLogic::createMove(int startRow, int startColumn, Color color, const Sq
     return Move{startRow, startColumn, endRow, endColumn, endSquare.piece, false, Piece::EMPTY};
 }
 
+bool PieceLogic::isTakeMove(const Square& square, Color color) const{
+    return square.piece != Piece::EMPTY && color != square.color;
+}
+
 void PieceLogic::movePiece(int startRow, int startCol, Color color, Horizontal horizontalDirection, Vertical verticalDirection, std::vector<Move>& availableMoves, const std::vector<std::vector<Square>>& board) const {
     int nextRow = moveVerticalIndex(startRow, verticalDirection, color);
     int nextCol = moveHorizontalIndex(startCol, horizontalDirection, color);
@@ -25,8 +29,11 @@ void PieceLogic::movePiece(int startRow, int startCol, Color color, Horizontal h
           Square nextSquare = board[nextRow][nextCol];
         auto move = createMove(startRow, startCol, color, nextSquare, nextRow, nextCol);
         availableMoves.push_back(move);
+        if(isTakeMove(nextSquare, color)) break;
+        
         nextRow = moveVerticalIndex(nextRow, verticalDirection, color);
         nextCol = moveHorizontalIndex(nextCol, horizontalDirection, color);
+        
     }
 }
 

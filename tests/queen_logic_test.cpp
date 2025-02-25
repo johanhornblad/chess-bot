@@ -22,6 +22,39 @@ protected:
   
 };
 
+
+TEST_F(QueenTest, QueenCanTakeInAllDirections) {
+    auto controller = BoardController{};
+    // Arrange
+    QueenLogic queenLogic;
+    int startRow = 3;
+    int startColumn = 3;
+    Color color = Color::WHITE;
+    board[startRow][startColumn] = Square{Piece::QUEEN, color};
+    board[startRow - 1][startColumn] = Square{Piece::ROOK, Color::BLACK};
+    board[startRow + 1][startColumn] = Square{Piece::QUEEN, Color::BLACK};
+    board[startRow][startColumn - 1] = Square{Piece::ROOK, Color::BLACK};
+    board[startRow][startColumn + 1] = Square{Piece::BISHOP, Color::BLACK};
+    board[startRow - 1][startColumn - 1] = Square{Piece::BISHOP, Color::BLACK};
+    board[startRow - 1][startColumn + 1] = Square{Piece::KNIGHT, Color::BLACK};
+    board[startRow + 1][startColumn + 1] = Square{Piece::KNIGHT, Color::BLACK};
+    board[startRow + 1][startColumn - 1] = Square{Piece::PAWN, Color::BLACK};
+    // Act
+    auto availableMoves = queenLogic.getAvaiableMoves(startRow, startColumn, color, board);
+
+    // Assert
+    int takeCount= 0;
+    ASSERT_EQ(availableMoves.size(), 8);
+    for (const auto& move : availableMoves) {
+        if(move.capture != Piece::EMPTY) {
+            takeCount++;
+        }
+    }
+
+    ASSERT_EQ(takeCount, 8);
+}
+
+
 // Test case to verify the queen's ability to move in all directions
 TEST_F(QueenTest, QueenCanMoveStraight) {
     // Arrange
