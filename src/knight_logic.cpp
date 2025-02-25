@@ -38,7 +38,7 @@ void KnightLogic::moveVertical(int startRow, int startCol, Color color, Vertical
         
     }
     if(isWithinBoard(nextRow, colLeft) && isAvailableSquare(board[nextRow][colLeft], color)) {
-        auto move2 = createMove(startRow, startCol, color, board[nextRow][colRight], nextRow, colLeft);
+        auto move2 = createMove(startRow, startCol, color, board[nextRow][colLeft], nextRow, colLeft);
         availableMoves.push_back(move2);        
     }
 
