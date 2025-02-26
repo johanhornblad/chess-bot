@@ -28,6 +28,7 @@ set(SOURCES
     src/bishop_logic.cpp
     src/queen_logic.cpp
     src/knight_logic.cpp
+    src/king_logic.cpp
     # Add more source files as needed
 )
 # Add your source files
